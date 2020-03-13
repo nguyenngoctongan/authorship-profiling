@@ -1,0 +1,21 @@
+can
+cannot
+can't
+could
+couldn't
+may
+might
+must
+mustn't
+will
+won't
+would
+wouldn't
+shall
+should
+shouldn't
+ought to
+had better
+have to
+need
+dare
