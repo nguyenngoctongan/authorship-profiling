@@ -43,29 +43,7 @@ def classify(X_train_file, y_train, X_test_file, y_test, feature = "stylometric"
     X_test_file: the path to the file containg the test vectors
     y_test: a list of test labels
     feature: name of the feature set
-    pl_*: a pipeline for training
-        (lr: Logistic Regression
-         rf: Random Forest
-         sgd: Stochastic Gradient Descent)
-    prm_*: a dictionary of options for each parameter of each algorithm
-    jobs: a parameter for grid search, meaning the number of jobs to run in parallel
-          jobs = -1 means using all processors
-    gs_*: Grid search fuction set up
-    clfs: list of classifiers
-    clf_dict: Dictionary of index and name of each classifier for references
-    X_train_vecs: a list of train vectors
-    X_test_vecs: a list of test vectors
-    save_file_name: the name of the file to which all results are saved
-    estimator: name of the classifier
-    best_prm: best parameters for the classifier to achieve the best f1 score
-    y_pred: a list of all predicted labels of the test set
-    f1_score: F1 score of the classifier on the test set
-    clf_report: report on the main results
-    cfm: confusion matrix
-    cm_df: confusion matrix in dataframe format
-    result: a result from a one training
-    results: all results from all training
-    
+        
     Return a message
     
     References:
