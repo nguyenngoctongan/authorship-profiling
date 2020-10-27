@@ -41,9 +41,7 @@ def get_word_list(name="positive"):
     """Get a list of sentiment words
     This function has only one key word argument. Key words can be "positive", "negative", "bad", or "modal"
     If key word is not in the list, a warning massage will be shown
-    pos_word_list: list of positive words
-    neg_word_list: list of negative words
-    bad_word_list: list of profane words
+ 
     Return a list of positive, negative, profane words, modal verbs or a warning"""
     if name == "positive":
         with open ('word_list/positive-words.txt', 'r') as infile:
@@ -76,42 +74,7 @@ def extract_stylo_features(tweets, save_file_name):
     Extracting stylometric features from the corpus
     tweets: a list of tweets from the data file
     save_file_name: name of file to which extracted feature vectors are save
-    pos_word_list: a list of positive words
-    neg_word_list: a list of negative words
-    bad_word_list: a list of profane words
-    modal_list: a list of modal verbs
-    stylo_features: a list of extracted stylometric features from all tweets
-    features: a list of extracted stylometric features from a tweet
-    token_list: list of token in a tweet
-    num_tkns: the number of tokens in a tweet
-    num_snts: the number of sentences in a tweet
-    avg_sent_len: the average sentence length
-    sum_token_len: the sum of the length of all tokens
-    avg_token_len: the average sentence length
-    pos_tags: a list of part-of-speech tags of all tokens in a tweet
-    nn_count: count the number of nouns in a tweet
-    adj_count: count the number of adjective in a tweet
-    v_count: count the number of verbs in a tweet
-    adv_count: count the number of adverbs in a tweet
-    prn_count : count the number of pronouns in a tweet
-    polarity_score: the polarity score of a tweet
-    subjectivity_score: the subjectivity score of a tweet
-    blob_word: a single token in a string format
-    dit_count: count the number of tokens that are digits in a tweet
-    spc_count: count the number of tokens that are special characters in a tweet
-    cap_count: count the number of tokens that contain capital characters in a tweet
-    pos_word_count: count the number of tokens that have positve sentiment scores
-    neg_word_count: count the number of tokens that have negative sentiment scores
-    bad_word_count: count the number of tokens that are profane words
-    modal_verb_count: count the number of tokens that are modal verbs
-    num_emojis: the number of emojis in a tweet
-    num_hashtags: the number of hashtags in a tweet
-    num_users: the number of tagged users in a tweet
-    ents: a list of named entities in a tweet
-    dict_vtrz: call DictVectorizer function
-    stylometric: stylometric feature vectors transformed by a DictVectorizer
-    save_file: save the feature vector and return the file name
-    
+        
     Return: The name of the file that contains the feature vectors
     """
     pos_word_list = get_word_list(name ="pos")
@@ -275,9 +238,6 @@ def train_wmbs(tweets, size=100):
     This function has one positional argument "tweets" and one key word function "size"
     tweets: a list of tweets from the data file
     size: the size of the embedding, default value is 100
-    documents: a list of tokenised tweets
-    w2v_model: trained word2vec model
-    w2v_model_file: path to model file
     
     Return the path to model file
     
@@ -305,15 +265,7 @@ def create_wmbs(model_file,tweets,save_file_name, size = 100):
     tweets: a list of tweets from the data file
     save_file_name: the name of the file to which feature vectors are saved
     size: the size of the embeddings, default value is 100
-    model: the word embedding model loaded from the model file
-    word_embs: a list of tweet vectors
-    wmb_size: the size of each tweet vectors, calculated by the sum of the sizes of token_vect, pos_vect, dep_vect, and head_vect
-    token_vect: the word embedding representing a token in a tweet
-    pos_vect: the part-of-speech vector of a token in a tweet
-    dep_vect: the dependency vector representing the relation of a token with its head in a tweet
-    head_vect: the word embedding representing the head of a token in a tweet
-    save_file: save the list of feature vectors and return the name of the save file
-    
+        
     Return: name of the save file
     """
     print('Create tweet representation using word embedding')
@@ -344,11 +296,7 @@ def train_dmbs(tweets, size = 200):
     Train document embeddings with tweets in the corpus using Doc2Vec model from Gensim library
     tweets: a list of tweet from the data file
     size: the size of the document embeddings
-    tagged_documents: a list of tokenised tweets and tags
-    cores: count the number of core processors
-    model_dbow: document embedding model trained with tweets and dbow model
-    model_dbow_file: the path to the model save file
-    
+        
     Return the path to the model save file
     
     Reference: 
@@ -388,11 +336,6 @@ def create_dmbs(model_file, tweets, save_file_name, size = 200):
     tweets: a list of tweets from the data file
     save_file_name: the name of the file to which feature vectors are saved
     size: the size of the document embeddings: default value is 200
-    model: the word embedding model loaded from the model file
-    doc_embs: a list of document embeddings, each of which represents a tweet
-    documents: a list of tokenised tweets
-    doc_vect: vector representation of a tweet
-    save_file: save the list of feature vectors and return the name of the save file
     
     Return: the name of the file to which feature vectors are saved
     """
@@ -422,14 +365,7 @@ def combine_feats(stylometric_file,word_embs_file,doc_embs_file,comb = "all", di
         "W_D": word embeding and document embedding features
         "all": all three sets of feature
     directory: where to save the file containing feature vectors
-    stylometric: a list of stylometric feature vectors
-    sty_vect: a stylometric feature vector of a tweet
-    word_embs: a list of word embeddings representations
-    w_vect: a word embedding vector represention of a tweet
-    doc_embs: a list of document embeddings
-    d_vect: a document embeding vector of a tweet
-    *_save_file_name: the name of the file to which combined feature vectors are saved
-
+    
     Return the path to the combined feature vector save file
     """
 
